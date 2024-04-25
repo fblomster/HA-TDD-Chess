@@ -25,9 +25,25 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
         // Check if the destination square is occupied by another piece
         ChessPiece pieceAtDestination = chessboard.getPieceAt(destination);
 
+        // Check if it's the pawn's first move
+        boolean isFirstMove = (getColor() == Color.WHITE && currentY == 6) || (getColor() == Color.BLACK && currentY == 1);
+
+        // Pawn moves one or two squares forward on its first move
+        if (isFirstMove && destX == currentX && (destY == currentY + direction || destY == currentY + 2 * direction)) {
+            // Check if there are no pieces blocking the way
+            if (destY == currentY + 2 * direction && chessboard.getPieceAt(new Square(currentX, currentY + direction)) == null) {
+                return pieceAtDestination == null;
+            }
+            return pieceAtDestination == null;
+        }
+
         // Pawn moves one square forward
         if (destX == currentX && destY == currentY + direction && pieceAtDestination == null) {
-            System.out.println("Hej");
+            //System.out.println("Hej");
+            return true;
+        }
+
+        if (Math.abs(destX - currentX) == 1 && destY == currentY + direction && pieceAtDestination != null) {
             return true;
         } else {
             return false;

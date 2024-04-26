@@ -51,15 +51,15 @@ public class ChessboardImpl implements Chessboard {
                                              final List<Integer> xCoordinates, final int yCoordinate) {
         xCoordinates.forEach(xCoordinate -> {
             switch (pieceType) {
+                //TODO, when you implement a piece, add it as a case in this switch
                 case PAWN -> {
                     addPiece(new Pawn(Color.BLACK, new Square(xCoordinate, yCoordinate)));
                     addPiece(new Pawn(Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));
                 }
-                /*case ROOK -> {
-                    addPiece(new Pawn(Color.BLACK, new Square(xCoordinate, yCoordinate)));
-                    addPiece(new Pawn(Color.WHITE, new Square(xCoordinate, 6 - yCoordinate)));
-                }*/
-                //TODO, when you implement a piece, add it as a case in this switch
+                case ROOK -> {
+                    addPiece(new Rook(Color.BLACK, new Square(xCoordinate, yCoordinate)));
+                    addPiece(new Rook(Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));
+                }
                 default -> {
                     addPiece(new ChessPieceStub(pieceType, Color.BLACK, new Square(xCoordinate, yCoordinate)));
                     addPiece(new ChessPieceStub(pieceType, Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));

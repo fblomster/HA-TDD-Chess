@@ -68,6 +68,10 @@ public class ChessboardImpl implements Chessboard {
                     addPiece(new Bishop(Color.BLACK, new Square(xCoordinate, yCoordinate)));
                     addPiece(new Bishop(Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));
                 }
+                /*case QUEEN -> {
+                    addPiece(new Queen(Color.BLACK, new Square(xCoordinate, yCoordinate)));
+                    addPiece(new Queen(Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));
+                }*/
                 default -> {
                     addPiece(new ChessPieceStub(pieceType, Color.BLACK, new Square(xCoordinate, yCoordinate)));
                     addPiece(new ChessPieceStub(pieceType, Color.WHITE, new Square(xCoordinate, 7 - yCoordinate)));

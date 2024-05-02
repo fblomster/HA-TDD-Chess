@@ -43,11 +43,12 @@ public class Pawn extends ChessPieceBase implements ChessPiece{
             return true;
         }
 
+
         if (Math.abs(destX - currentX) == 1 && destY == currentY + direction && pieceAtDestination != null) {
             return true;
         } else {
             return false;
         }
     }
-
 }
+

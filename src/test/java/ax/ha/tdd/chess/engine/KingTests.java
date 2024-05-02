@@ -1,9 +1,7 @@
 package ax.ha.tdd.chess.engine;
 
 import ax.ha.tdd.chess.console.ChessboardWriter;
-import ax.ha.tdd.chess.engine.pieces.Bishop;
-import ax.ha.tdd.chess.engine.pieces.King;
-import ax.ha.tdd.chess.engine.pieces.Queen;
+import ax.ha.tdd.chess.engine.pieces.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -146,6 +144,30 @@ public class KingTests {
         chessboard.addPiece(bishop);
 
         assertFalse(king.canMove(chessboard, new Square("c2")));
+        System.out.println(new ChessboardWriter().print(chessboard));
+    }
+
+    @Test
+    public void testIsKingThreatenedByRookShouldBeIllegal() {
+        Chessboard chessboard = new ChessboardImpl();
+        King king = new King(Color.WHITE, new Square("d1"));
+        chessboard.addPiece(king);
+        Rook rook = new Rook(Color.BLACK, new Square("e4"));
+        chessboard.addPiece(rook);
+
+        assertFalse(king.canMove(chessboard, new Square("e1")));
+        System.out.println(new ChessboardWriter().print(chessboard));
+    }
+
+    @Test
+    public void testIsKingThreatenedByPawnShouldBeIllegal() {
+        Chessboard chessboard = new ChessboardImpl();
+        King king = new King(Color.WHITE, new Square("d1"));
+        chessboard.addPiece(king);
+        Pawn pawn = new Pawn(Color.BLACK, new Square("f2"));
+        chessboard.addPiece(pawn);
+
+        assertFalse(king.canMove(chessboard, new Square("e1")));
         System.out.println(new ChessboardWriter().print(chessboard));
     }
 }
